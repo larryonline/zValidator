@@ -9,12 +9,10 @@
 /* Begin PBXBuildFile section */
 		464A395C1C907B730006A367 /* zChaining_Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 464A395B1C907B730006A367 /* zChaining_Test.m */; };
 		464A39621C90806A0006A367 /* zValidator+Chaining.m in Sources */ = {isa = PBXBuildFile; fileRef = 464A39611C90806A0006A367 /* zValidator+Chaining.m */; };
-		4687E1471C90975200220DDD /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4687E1461C90975200220DDD /* README.md */; };
 		46915E321C902D320030404A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46915E271C902D320030404A /* AppDelegate.m */; };
 		46915E331C902D320030404A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46915E281C902D320030404A /* Assets.xcassets */; };
 		46915E341C902D320030404A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46915E2A1C902D320030404A /* LaunchScreen.storyboard */; };
 		46915E351C902D320030404A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46915E2C1C902D320030404A /* Main.storyboard */; };
-		46915E361C902D320030404A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46915E2E1C902D320030404A /* Info.plist */; };
 		46915E371C902D320030404A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 46915E2F1C902D320030404A /* main.m */; };
 		46915E381C902D320030404A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46915E311C902D320030404A /* ViewController.m */; };
 		46915E4A1C902D700030404A /* zBlockRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 46915E3F1C902D700030404A /* zBlockRule.m */; };
@@ -264,7 +262,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46915E361C902D320030404A /* Info.plist in Resources */,
 				46915E351C902D320030404A /* Main.storyboard in Resources */,
 				46915E331C902D320030404A /* Assets.xcassets in Resources */,
 				46915E341C902D320030404A /* LaunchScreen.storyboard in Resources */,
@@ -287,7 +284,6 @@
 			files = (
 				46915E4B1C902D700030404A /* zRule.m in Sources */,
 				46915E381C902D320030404A /* ViewController.m in Sources */,
-				4687E1471C90975200220DDD /* README.md in Sources */,
 				46915E4A1C902D700030404A /* zBlockRule.m in Sources */,
 				46915E371C902D320030404A /* main.m in Sources */,
 				46915E321C902D320030404A /* AppDelegate.m in Sources */,
