@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		464A39581C9050480006A367 /* zValidatorForNSString.m in Sources */ = {isa = PBXBuildFile; fileRef = 464A39571C9050480006A367 /* zValidatorForNSString.m */; };
+		464A395C1C907B730006A367 /* zChaining_Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 464A395B1C907B730006A367 /* zChaining_Test.m */; };
+		464A39621C90806A0006A367 /* zValidator+Chaining.m in Sources */ = {isa = PBXBuildFile; fileRef = 464A39611C90806A0006A367 /* zValidator+Chaining.m */; };
+		4687E1471C90975200220DDD /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4687E1461C90975200220DDD /* README.md */; };
 		46915E321C902D320030404A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46915E271C902D320030404A /* AppDelegate.m */; };
 		46915E331C902D320030404A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46915E281C902D320030404A /* Assets.xcassets */; };
 		46915E341C902D320030404A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46915E2A1C902D320030404A /* LaunchScreen.storyboard */; };
@@ -15,15 +17,12 @@
 		46915E361C902D320030404A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46915E2E1C902D320030404A /* Info.plist */; };
 		46915E371C902D320030404A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 46915E2F1C902D320030404A /* main.m */; };
 		46915E381C902D320030404A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46915E311C902D320030404A /* ViewController.m */; };
-		46915E491C902D700030404A /* NSString+zValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 46915E3C1C902D700030404A /* NSString+zValidator.m */; };
 		46915E4A1C902D700030404A /* zBlockRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 46915E3F1C902D700030404A /* zBlockRule.m */; };
 		46915E4B1C902D700030404A /* zRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 46915E411C902D700030404A /* zRule.m */; };
 		46915E4C1C902D700030404A /* zRuleAND.m in Sources */ = {isa = PBXBuildFile; fileRef = 46915E431C902D700030404A /* zRuleAND.m */; };
 		46915E4D1C902D700030404A /* zRuleOR.m in Sources */ = {isa = PBXBuildFile; fileRef = 46915E451C902D700030404A /* zRuleOR.m */; };
 		46915E4E1C902D700030404A /* zValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 46915E481C902D700030404A /* zValidator.m */; };
-		46915E521C902D970030404A /* NSString_zValidator_Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 46915E4F1C902D970030404A /* NSString_zValidator_Test.m */; };
 		46915E531C902D970030404A /* zRule_Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 46915E501C902D970030404A /* zRule_Test.m */; };
-		46915E541C902D970030404A /* zValidator_Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 46915E511C902D970030404A /* zValidator_Test.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		464A39561C9050480006A367 /* zValidatorForNSString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zValidatorForNSString.h; path = zValidator/validators/zValidatorForNSString.h; sourceTree = SOURCE_ROOT; };
-		464A39571C9050480006A367 /* zValidatorForNSString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = zValidatorForNSString.m; path = zValidator/validators/zValidatorForNSString.m; sourceTree = SOURCE_ROOT; };
+		464A395A1C906CCE0006A367 /* zValidatorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = zValidatorProtocol.h; path = zValidator/zValidatorProtocol.h; sourceTree = "<group>"; };
+		464A395B1C907B730006A367 /* zChaining_Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = zChaining_Test.m; sourceTree = "<group>"; };
+		464A39601C90806A0006A367 /* zValidator+Chaining.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "zValidator+Chaining.h"; path = "zValidator/chaining/zValidator+Chaining.h"; sourceTree = "<group>"; };
+		464A39611C90806A0006A367 /* zValidator+Chaining.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "zValidator+Chaining.m"; path = "zValidator/chaining/zValidator+Chaining.m"; sourceTree = "<group>"; };
+		4687E1461C90975200220DDD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		46915DFC1C902CB60030404A /* zValidator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zValidator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46915E151C902CB70030404A /* zValidatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46915E1B1C902CB70030404A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,8 +53,6 @@
 		46915E2F1C902D320030404A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = zValidatorDemo/main.m; sourceTree = "<group>"; };
 		46915E301C902D320030404A /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = zValidatorDemo/ViewController.h; sourceTree = "<group>"; };
 		46915E311C902D320030404A /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = zValidatorDemo/ViewController.m; sourceTree = "<group>"; };
-		46915E3B1C902D700030404A /* NSString+zValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+zValidator.h"; sourceTree = "<group>"; };
-		46915E3C1C902D700030404A /* NSString+zValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+zValidator.m"; sourceTree = "<group>"; };
 		46915E3E1C902D700030404A /* zBlockRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zBlockRule.h; sourceTree = "<group>"; };
 		46915E3F1C902D700030404A /* zBlockRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = zBlockRule.m; sourceTree = "<group>"; };
 		46915E401C902D700030404A /* zRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zRule.h; sourceTree = "<group>"; };
@@ -61,12 +61,9 @@
 		46915E431C902D700030404A /* zRuleAND.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = zRuleAND.m; sourceTree = "<group>"; };
 		46915E441C902D700030404A /* zRuleOR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zRuleOR.h; sourceTree = "<group>"; };
 		46915E451C902D700030404A /* zRuleOR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = zRuleOR.m; sourceTree = "<group>"; };
-		46915E461C902D700030404A /* zRuleProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zRuleProtocol.h; sourceTree = "<group>"; };
 		46915E471C902D700030404A /* zValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zValidator.h; path = zValidator/zValidator.h; sourceTree = "<group>"; };
 		46915E481C902D700030404A /* zValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = zValidator.m; path = zValidator/zValidator.m; sourceTree = "<group>"; };
-		46915E4F1C902D970030404A /* NSString_zValidator_Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_zValidator_Test.m; sourceTree = "<group>"; };
 		46915E501C902D970030404A /* zRule_Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = zRule_Test.m; sourceTree = "<group>"; };
-		46915E511C902D970030404A /* zValidator_Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = zValidator_Test.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,13 +84,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		464A39591C90504F0006A367 /* validators */ = {
+		464A39631C9080790006A367 /* chaining */ = {
 			isa = PBXGroup;
 			children = (
-				464A39561C9050480006A367 /* zValidatorForNSString.h */,
-				464A39571C9050480006A367 /* zValidatorForNSString.m */,
+				464A39601C90806A0006A367 /* zValidator+Chaining.h */,
+				464A39611C90806A0006A367 /* zValidator+Chaining.m */,
 			);
-			name = validators;
+			name = chaining;
 			sourceTree = "<group>";
 		};
 		46915DF31C902CB60030404A = {
@@ -103,6 +100,7 @@
 				46915E251C902D220030404A /* zValidatorDemo */,
 				46915E181C902CB70030404A /* zValidatorTests */,
 				46915DFD1C902CB60030404A /* Products */,
+				4687E1461C90975200220DDD /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,10 +116,9 @@
 		46915E181C902CB70030404A /* zValidatorTests */ = {
 			isa = PBXGroup;
 			children = (
-				46915E4F1C902D970030404A /* NSString_zValidator_Test.m */,
 				46915E501C902D970030404A /* zRule_Test.m */,
-				46915E511C902D970030404A /* zValidator_Test.m */,
 				46915E1B1C902CB70030404A /* Info.plist */,
+				464A395B1C907B730006A367 /* zChaining_Test.m */,
 			);
 			path = zValidatorTests;
 			sourceTree = "<group>";
@@ -129,11 +126,11 @@
 		46915E241C902CCA0030404A /* zValidator */ = {
 			isa = PBXGroup;
 			children = (
-				464A39591C90504F0006A367 /* validators */,
-				46915E3A1C902D700030404A /* categories */,
+				464A39631C9080790006A367 /* chaining */,
 				46915E3D1C902D700030404A /* rules */,
 				46915E471C902D700030404A /* zValidator.h */,
 				46915E481C902D700030404A /* zValidator.m */,
+				464A395A1C906CCE0006A367 /* zValidatorProtocol.h */,
 			);
 			name = zValidator;
 			sourceTree = "<group>";
@@ -171,16 +168,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		46915E3A1C902D700030404A /* categories */ = {
-			isa = PBXGroup;
-			children = (
-				46915E3B1C902D700030404A /* NSString+zValidator.h */,
-				46915E3C1C902D700030404A /* NSString+zValidator.m */,
-			);
-			name = categories;
-			path = zValidator/categories;
-			sourceTree = "<group>";
-		};
 		46915E3D1C902D700030404A /* rules */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,7 +179,6 @@
 				46915E431C902D700030404A /* zRuleAND.m */,
 				46915E441C902D700030404A /* zRuleOR.h */,
 				46915E451C902D700030404A /* zRuleOR.m */,
-				46915E461C902D700030404A /* zRuleProtocol.h */,
 			);
 			name = rules;
 			path = zValidator/rules;
@@ -301,12 +287,12 @@
 			files = (
 				46915E4B1C902D700030404A /* zRule.m in Sources */,
 				46915E381C902D320030404A /* ViewController.m in Sources */,
+				4687E1471C90975200220DDD /* README.md in Sources */,
 				46915E4A1C902D700030404A /* zBlockRule.m in Sources */,
 				46915E371C902D320030404A /* main.m in Sources */,
 				46915E321C902D320030404A /* AppDelegate.m in Sources */,
-				46915E491C902D700030404A /* NSString+zValidator.m in Sources */,
+				464A39621C90806A0006A367 /* zValidator+Chaining.m in Sources */,
 				46915E4C1C902D700030404A /* zRuleAND.m in Sources */,
-				464A39581C9050480006A367 /* zValidatorForNSString.m in Sources */,
 				46915E4D1C902D700030404A /* zRuleOR.m in Sources */,
 				46915E4E1C902D700030404A /* zValidator.m in Sources */,
 			);
@@ -316,9 +302,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46915E541C902D970030404A /* zValidator_Test.m in Sources */,
 				46915E531C902D970030404A /* zRule_Test.m in Sources */,
-				46915E521C902D970030404A /* NSString_zValidator_Test.m in Sources */,
+				464A395C1C907B730006A367 /* zChaining_Test.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

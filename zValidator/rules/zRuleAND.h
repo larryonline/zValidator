@@ -9,11 +9,5 @@
 #import "zRule.h"
 
 @interface zRuleAND : zRule<zComplexRule>
-
--(id)initWithSubRules:(NSArray<id<zRule>> *)subRules;
-
-@end
-
-@interface zRuleAND(Chaining)
--(zRuleAND *(^)(id<zRule>))AND;
+@property (nonatomic, copy) NSArray<id<zRule>> *subRules;
 @end

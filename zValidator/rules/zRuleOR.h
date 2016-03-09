@@ -8,10 +8,6 @@
 
 #import "zRule.h"
 
-@interface zRuleOR : zRule
--(id)initWithSubRules:(NSArray<id<zRule>> *)subRules;
-@end
-
-@interface zRuleOR(Chaining)
--(zRuleOR *(^)(id<zRule>))OR;
+@interface zRuleOR : zRule<zComplexRule>
+@property (nonatomic, copy) NSArray<id<zRule>> *subRules;
 @end

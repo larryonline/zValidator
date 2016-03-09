@@ -8,32 +8,26 @@
 
 #import "zBlockRule.h"
 @interface zBlockRule()
-@property (nonatomic, copy) zRuleBlock rule;
+
 @end
 
 @implementation zBlockRule
 
-@synthesize rule = _rule;
+@synthesize block = _block;
 
 -(void)dealloc{
-    self.rule = nil;
-}
-
--(id)initWithRuleBlock:(zRuleBlock)ruleBlock{
-    if(self = [super init]){
-        self.rule = [ruleBlock copy];
-    }
-    return self;
-}
-
--(id)copyWithZone:(NSZone *)zone{
-    zBlockRule *result = [[[self class] allocWithZone:zone] initWithRuleBlock:self.rule];
-    result.uuid = self.uuid;
-    return result;
+    self.block = nil;
 }
 
 -(BOOL)validate:(id)data{
-    return self.rule(data);
+    return self.block(data);
+}
+
+-(id)copyWithZone:(NSZone *)zone{
+    zBlockRule *result = [[[self class] allocWithZone:zone] init];
+    result.uuid = self.uuid;
+    result.block = self.block;
+    return result;
 }
 
 @end

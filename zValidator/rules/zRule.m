@@ -14,7 +14,8 @@
 
 @implementation zRule
 
-@synthesize validator = _validator, uuid = _uuid;
+@synthesize root = _root, parent = _parent, uuid = _uuid;
+
 
 +(NSString *)makeUUID{
     CFUUIDRef uuid_ref = CFUUIDCreate(NULL);
@@ -25,8 +26,19 @@
     return [uuid lowercaseString];
 }
 
+-(zValidator *)root{
+    if(nil == _root){
+        if(nil != _parent){
+            return _parent.root;
+        }
+    }
+    return _root;
+}
+
 -(void)dealloc{
     self.uuid = nil;
+    self.root = nil;
+    self.parent = nil;
 }
 
 -(id)init{

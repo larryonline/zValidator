@@ -24,20 +24,20 @@
     [super tearDown];
 }
 
-- (void)testBlockRule{
+- (void)testRule{
     
-    zBlockRule *rule = [[zBlockRule alloc] initWithRuleBlock:^BOOL(id data) {
-        return YES;
-    }];
+    zRule *a = [[zRule alloc] init];
+    NSAssert([a isEqual:[a copy]], @"should equal with copy");
+    NSAssert([a hash] != [a.uuid hash], @"string should not equal zRule even, zRule have same uuid");
     
-    NSAssert([rule validate:nil], @"result should be <YES>");
     
-    rule = [[zBlockRule alloc] initWithRuleBlock:^BOOL(id data) {
-        return NO;
-    }];
+    zRule *b = [[zRule alloc] init];
+    NSAssert(![a isEqual:b], @"should not equal");
+
     
-    NSAssert(![rule validate:nil], @"result should be <NO>");
-    
+    NSArray *set = @[a, b];
+    NSAssert([set indexOfObject:[a copy]] == 0, @"should find item at index 0");
+    NSAssert([set indexOfObject:[b copy]] == 1, @"should find item at index 1");
 }
 
 - (void)testExample {

@@ -7,14 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "zRuleProtocol.h"
-
-@class zValidator;
+#import "zValidatorProtocol.h"
+#import "zValidator.h"
 
 @interface zRule : NSObject<zRule>
 @property (nonatomic, copy) NSString *uuid;
-@property (nonatomic, weak) zValidator *validator;
 
--(BOOL)validate:(id)data;
-
+@property (nonatomic, weak) zValidator *root;
+@property (nonatomic, weak) id<zComplexRule> parent;
 @end

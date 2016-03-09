@@ -8,12 +8,6 @@
 
 #import "zRule.h"
 
-typedef BOOL (^zRuleBlock)(id data);
-
 @interface zBlockRule : zRule
-
-@property (nonatomic, copy, readonly) zRuleBlock rule;
-
--(id)initWithRuleBlock:(zRuleBlock)ruleBlock;
-
+@property (nonatomic, copy) zValidation block;
 @end

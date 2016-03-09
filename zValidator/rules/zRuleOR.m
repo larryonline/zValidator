@@ -9,58 +9,34 @@
 #import "zRuleOR.h"
 
 @interface zRuleOR()
-@property (nonatomic, copy) NSArray<id<zRule>> *subRules;
+
 @end
 @implementation zRuleOR
 
-@synthesize uuid = _uuid, subRules = _subRules;
+@synthesize subRules = _subRules;
 
 -(void)dealloc{
     self.subRules = nil;
 }
 
--(id)initWithSubRules:(NSArray<id<zRule>> *)subRules{
+-(id)init{
     if(self = [super init]){
-        if(nil != subRules){
-            self.subRules = [NSArray arrayWithArray:subRules];
-        }else{
-            self.subRules = @[];
-        }
+        self.subRules = @[];
     }
     return self;
 }
 
 -(id)copyWithZone:(NSZone *)zone{
-    zRuleOR *result = [[[self class] allocWithZone:zone] initWithSubRules:self.subRules];
+    zRuleOR *result = [[[self class] allocWithZone:zone] init];
     result.uuid = self.uuid;
+    result.subRules = self.subRules;
     return result;
 }
 
 -(void)addSubRule:(id<zRule>)rule{
-    if([self.subRules containsObject:rule]){
+    if(![self.subRules containsObject:rule]){
         self.subRules = [self.subRules arrayByAddingObject:rule];
     }
-}
-
--(void)removeSubRule:(id<zRule>)rule{
-    if([self.subRules containsObject:rule]){
-        
-        NSMutableArray *temp = [self.subRules mutableCopy];
-        [temp removeObject:rule];
-        
-        self.subRules = [temp copy];
-    }
-}
-
--(id<zRule>)removeSubRowWithIndex:(NSUInteger)index{
-    id<zRule> ret = nil;
-    if(index < [self.subRules count]){
-        ret = [self.subRules objectAtIndex:index];
-        NSMutableArray *temp = [self.subRules mutableCopy];
-        [temp removeObject:ret];
-        self.subRules = [temp copy];
-    }
-    return ret;
 }
 
 -(BOOL)validate:(id)data{
