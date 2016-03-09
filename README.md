@@ -1,10 +1,10 @@
-- zValidator
+# zValidator
 
 lib for NSObject validation.
 
 
 
-```
+```Objective-C
     zValidator *v = zValidator.target(nil).makesure(@"target should be NSArray", ^BOOL(id data){
 
         return [data isKindOfClass:[NSArray class]];
