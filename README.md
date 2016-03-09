@@ -5,7 +5,7 @@ lib for NSObject validation.
 
 
 ```Objective-C
-    zValidator *v = zValidator.target(nil).makesure(@"target should be NSArray", ^BOOL(id data){
+    zValidator *v = zValidator.new.makesure(@"target should be NSArray", ^BOOL(id data){
 
         return [data isKindOfClass:[NSArray class]];
 
@@ -50,6 +50,7 @@ lib for NSObject validation.
     for(NSInteger i = 0; i < [mockList count]; i++){
         id mock = [mockList objectAtIndex:i];
         v.target = mock;
+        [v validate];
         // NSAssert([v validate], [v failedMessage]);
         NSLog(@"Target: %@\nError:  %@", mock, [v failedMessage]);
     }
