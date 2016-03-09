@@ -1,4 +1,4 @@
-- zValidator
+= zValidator
 
 lib for NSObject validation.
 
