@@ -52,10 +52,14 @@
 
 
 -(BOOL)validate{
+    
+    
     BOOL ret = YES;
     
     NSDictionary *map = [self.map copy];
     NSArray *order = [self.order copy];
+    
+    NSArray *failedMessageList = @[];
     
     for(NSInteger i = 0; i < [order count]; i++){
         id<zRule> rule = [order objectAtIndex:i];
@@ -63,7 +67,7 @@
         BOOL val = [rule validate:self.target];
         if(NO == val){
             NSString *failedMessage = [map objectForKey:rule];
-            self.failedMessageList = [self.failedMessageList arrayByAddingObject:[failedMessage copy]];
+            failedMessageList = [failedMessageList arrayByAddingObject:[failedMessage copy]];
         }
         
         ret = ret && val;
@@ -72,6 +76,8 @@
             break;
         }
     }
+    
+    self.failedMessageList = failedMessageList;
     
     return ret;
 }

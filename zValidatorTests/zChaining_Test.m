@@ -26,7 +26,7 @@
 
 -(void)testChaining{
     
-    zValidator *v = zValidator.target(nil).makesure(@"target should be NSArray", ^BOOL(id data){
+    zValidator *v = zValidator.new.makesure(@"target should be NSArray", ^BOOL(id data){
         
         return [data isKindOfClass:[NSArray class]];
         
@@ -71,7 +71,9 @@
     for(NSInteger i = 0; i < [mockList count]; i++){
         id mock = [mockList objectAtIndex:i];
         v.target = mock;
-        NSAssert([v validate], @"Target:  %@\nError:  %@", mock, [v failedMessage]);
+        [v validate];
+        NSLog(@"\n=====================\n%@\n%@\n==================", mock, [v failedMessage]);
+//        NSAssert([v validate], [v failedMessage]);
     }
 
 }
