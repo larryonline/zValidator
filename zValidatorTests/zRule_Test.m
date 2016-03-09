@@ -8,6 +8,9 @@
 
 #import <XCTest/XCTest.h>
 #import "zBlockRule.h"
+#import "zRuleAND.h"
+#import "zRuleOR.h"
+
 @interface zRule_Test : XCTestCase
 
 @end
@@ -38,6 +41,64 @@
     NSArray *set = @[a, b];
     NSAssert([set indexOfObject:[a copy]] == 0, @"should find item at index 0");
     NSAssert([set indexOfObject:[b copy]] == 1, @"should find item at index 1");
+}
+
+- (void)testBlockRule{
+    zBlockRule *rule = [[zBlockRule alloc] init];
+    rule.block = ^(id data){
+        return [data isKindOfClass:[NSString class]];
+    };
+    
+    NSAssert([rule validate:@""], @"result should be YES");
+    NSAssert(![rule validate:@1], @"result should be NO");
+}
+
+- (void)testComplexRule_AND{
+    
+    zRuleAND *rule = [[zRuleAND alloc] init];
+    
+    zBlockRule *subRuleA = [[zBlockRule alloc] init];
+    subRuleA.block = ^BOOL(id data){
+        return [data isKindOfClass:[NSString class]];
+    };
+    
+    zBlockRule *subRuleB = [[zBlockRule alloc] init];
+    subRuleB.block = ^BOOL(id data){
+        return 3 == [data length];
+    };
+    
+    [rule addSubRule:subRuleA];
+    [rule addSubRule:subRuleB];
+    
+    NSAssert([rule validate:@"aaa"], @"result should be YES");
+    
+    NSAssert(![rule validate:@1], @"result should be NO");
+    NSAssert(![rule validate:@"aaaa"], @"result should be NO");
+}
+
+- (void)testComplexRule_OR{
+    
+    zRuleOR *rule = [[zRuleOR alloc] init];
+    
+    zBlockRule *subRuleA = [[zBlockRule alloc] init];
+    subRuleA.block = ^BOOL(id data){
+        return [data isKindOfClass:[NSString class]] && 4 > [data length];
+    };
+    
+    zBlockRule *subRuleB = [[zBlockRule alloc] init];
+    subRuleB.block = ^BOOL(id data){
+        return [data isKindOfClass:[NSString class]] && 6 < [data length];
+    };
+    
+    [rule addSubRule:subRuleA];
+    [rule addSubRule:subRuleB];
+    
+    NSAssert([rule validate:@"aaa"], @"result should be YES");
+    NSAssert([rule validate:@"aaaaaaa"], @"result should be YES");
+    
+    NSAssert(![rule validate:@123456], @"result should be NO");
+    NSAssert(![rule validate:@"aaaaa"], @"result should be NO");
+    NSAssert(![rule validate:@"aaaaaa"], @"result should be NO");
 }
 
 - (void)testExample {
