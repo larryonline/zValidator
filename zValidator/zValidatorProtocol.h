@@ -19,7 +19,7 @@
  */
 @protocol zRule <NSObject, NSCopying>
 
-@property (nonatomic, weak) id<zValidator> root;
+@property (nonatomic, strong) id<zValidator> root;
 @property (nonatomic, weak) id<zComplexRule> parent;
 
 -(BOOL)validate:(id)data;

@@ -13,6 +13,6 @@
 @interface zRule : NSObject<zRule>
 @property (nonatomic, copy) NSString *uuid;
 
-@property (nonatomic, weak) zValidator *root;
+@property (nonatomic, strong) zValidator *root;
 @property (nonatomic, weak) id<zComplexRule> parent;
 @end
