@@ -57,8 +57,8 @@
             
             @"-12.123".zzn.check(@"only accept numeric").isNumeric,
             
-            @"18600194740".zzn.check(@"only accept phone number").isChinaMobilePhoneNumber,
-            @"15101647815".zzn.check(@"only accept phone number").isChinaMobilePhoneNumber,
+            @"18612345678".zzn.check(@"only accept phone number").isChinaMobilePhoneNumber,
+            @"15187654321".zzn.check(@"only accept phone number").isChinaMobilePhoneNumber,
             
             @"my.super.duper-email-address@neverland.domain".zzn.check(@"only accept email address").isEmail,
         ];
