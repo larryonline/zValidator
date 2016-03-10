@@ -53,6 +53,7 @@
 		4687E1521C914A5700220DDD /* NSArray+zValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+zValidator.m"; path = "zValidator/categories/NSArray+zValidator.m"; sourceTree = "<group>"; };
 		4687E1541C914AD700220DDD /* NSObject+zValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+zValidator.h"; path = "zValidator/categories/NSObject+zValidator.h"; sourceTree = "<group>"; };
 		4687E1551C914AD700220DDD /* NSObject+zValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+zValidator.m"; path = "zValidator/categories/NSObject+zValidator.m"; sourceTree = "<group>"; };
+		4687E1571C91749800220DDD /* zValidator.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = zValidator.podspec; sourceTree = "<group>"; };
 		46915DFC1C902CB60030404A /* zValidator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zValidator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46915E151C902CB70030404A /* zValidatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46915E1B1C902CB70030404A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -126,6 +127,7 @@
 				46915E181C902CB70030404A /* zValidatorTests */,
 				46915DFD1C902CB60030404A /* Products */,
 				4687E1461C90975200220DDD /* README.md */,
+				4687E1571C91749800220DDD /* zValidator.podspec */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,8 +143,8 @@
 		46915E181C902CB70030404A /* zValidatorTests */ = {
 			isa = PBXGroup;
 			children = (
-				46915E501C902D970030404A /* zRule_Test.m */,
 				46915E1B1C902CB70030404A /* Info.plist */,
+				46915E501C902D970030404A /* zRule_Test.m */,
 				464A395B1C907B730006A367 /* zChaining_Test.m */,
 				4687E14C1C912ADA00220DDD /* NSString+zValidator_Test.m */,
 			);
