@@ -62,7 +62,7 @@
     
     
     NSArray * mockList = @[
-        @"I am not NSarray. sorry.",
+        @"I am not NSArray. sorry.",
         @[@"i", @"am", @"NSArray. yeah~~"],
         @[@"i am NSArray with NSNumber items", @1, @2, @3],
         @[@"a", @"i", @"am", @"the NSArray which have superpower to pass this test"]

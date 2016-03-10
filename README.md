@@ -2,56 +2,106 @@
 
 lib for NSObject validation.
 
-
+## NSString VALIDATION SUPPORT
 
 ```Objective-C
-    zValidator *v = zValidator.new.makesure(@"target should be NSArray", ^BOOL(id data){
 
-        return [data isKindOfClass:[NSArray class]];
+// zValidatorTests/NSString+zValidator_Test.m
 
-    }).
-    also.makesure_a(@"target length should be 4, and the sub item should all be NSString", ^BOOL(id data){
+NSArray *validators = @[
+    // zRule
+    @"".zzn.check(@"target should be instance of NSString").isNSString,
+    @"".zzn.check(@"target should be empty").isEmpty,
+    @"abc".zzn.check(@"target should not be empty").notEmpty,
+    @"xyz".zzn.check(@"target length should be 3 ").lengthEqual(3),
+    @"aaaaa".zzn.check(@"target length should greater than 4").greaterThan(4),
+    @"aaa".zzn.check(@"target length should less than 4").lessThan(4),
+    @"abc".zzn.check(@"target should match regexp : ^abc$").match(@"^abc$"),
+    @"abc".zzn.check(@"target should contains 'b'").contains(@"b"),
 
-        return 4 == [data count];
+    // zComplexRule
+    @"aaa".zzn.checkAndIs(@"target should not empty and length greater than 2").notEmpty.and.greaterThan(2),
 
-    }).and(^BOOL(id data){
+    @"".zzn.checkOrIs(@"target should empty or have 4 characters").isEmpty.or.lengthEqual(4),
+    @"aaaa".zzn.checkOrIs(@"target should empty or have 4 characters").isEmpty.or.lengthEqual(4),
 
-        BOOL ret = YES;
-        for(NSInteger i = 0; i < [data count]; i++){
-            if(![[data objectAtIndex:i] isKindOfClass:[NSString class]]){
-                ret = NO;
-                break;
-            }
-        }
-        return ret;
+    // very long chain
+    @"hi, i am zValidator work for NSString.".zzn.
+    checkOrIs(@"target should contains 'i' and 'am' and 'NSString'").contains(@"i").or.contains(@"am").or.contains(@"NSString").
+    also.checkAndIs(@"target length should equal 38, and contains 'hi'").lengthEqual(38).and.contains(@"hi"),
 
-    }).
-    also.makesure_o(@"the first item should be 'a' or 'b' or 'c'. ", ^BOOL(id data){
+    // utils for NSString
+    @"1234".zzn.checkAndIs(@"only accept 4 digits").isDigit.and.lengthEqual(4),
 
-        return [@"a" isEqualToString:[data objectAtIndex:0]];
+    @"-12.123".zzn.check(@"only accept numeric").isNumeric,
 
-    }).or(^BOOL(id data){
+    @"18600194740".zzn.check(@"only accept phone number").isChinaMobilePhoneNumber,
+    @"15101647815".zzn.check(@"only accept phone number").isChinaMobilePhoneNumber,
 
-        return [@"b" isEqualToString:[data objectAtIndex:0]];
+    @"my.super.duper-email-address@neverland.domain".zzn.check(@"only accept email address").isEmail,
+];
 
-    }).or(^BOOL(id data){
+NSAssert([validators validateContents], [validators failedMessageForContents]);
 
-        return [@"c" isEqualToString:[data objectAtIndex:0]];
-
-    }).validator;
-
-    NSArray * mockList = @[
-        @"I am not NSarray. sorry.",
-        @[@"i", @"am", @"NSArray. yeah~~"],
-        @[@"i am NSArray with NSNumber items", @1, @2, @3],
-        @[@"a", @"i", @"am", @"the NSArray which have superpower to pass this test"]
-    ];
-
-    for(NSInteger i = 0; i < [mockList count]; i++){
-        id mock = [mockList objectAtIndex:i];
-        v.target = mock;
-        [v validate];
-        // NSAssert([v validate], [v failedMessage]);
-        NSLog(@"Target: %@\nError:  %@", mock, [v failedMessage]);
-    }
 ```
+
+
+## NOT ONLY FOR NSString
+
+### Chain + Block
+
+```Objective-C
+
+// zValidatorTests/zChaining_Test.m
+
+zValidator *v = zValidator.new.checkIs(@"target should be NSArray", ^BOOL(id data){
+    return [data isKindOfClass:[NSArray class]];
+}).checkIsAndIs(@"target length should be 4, and the sub item should all be NSString", ^BOOL(id data){
+
+    return 4 == [data count];
+}).andIs(^BOOL(id data){
+
+    BOOL ret = YES;
+    for(NSInteger i = 0; i < [data count]; i++){
+        if(![[data objectAtIndex:i] isKindOfClass:[NSString class]]){
+            ret = NO;
+            break;
+        }
+    }
+    return ret;
+
+}).
+also.checkIsOrIs(@"the first item should be 'a' or 'b' or 'c'. ", ^BOOL(id data){
+
+    return [@"a" isEqualToString:[data objectAtIndex:0]];
+
+}).orIs(^BOOL(id data){
+
+    return [@"b" isEqualToString:[data objectAtIndex:0]];
+
+}).orIs(^BOOL(id data){
+
+    return [@"c" isEqualToString:[data objectAtIndex:0]];
+
+}).validator;
+
+
+NSArray * mockList = @[
+    @"sorry, I'm not NSArray.",
+    @[@"I", @"am", @"NSArray. Yeah~~"],
+    @[@"I am NSArray with NSNumber items", @1, @2, @3],
+    @[@"a", @"I", @"am", @"the NSArray which have superpower to pass this test"]
+];
+
+for(NSInteger i = 0; i < [mockList count]; i++){
+    id mock = [mockList objectAtIndex:i];
+    v.target = mock;
+    [v validate];
+    NSLog(@"\n=====================\n%@\n%@\n==================", mock, [v failedMessage]);
+//    NSAssert([v validate], [v failedMessage]);
+}
+```
+
+## MORE FEATURES COMING SOON.
+- UIKit Component Validation
+- ...
