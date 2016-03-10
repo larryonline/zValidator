@@ -10,26 +10,54 @@
 #import "zRule.h"
 #import "zRuleAND.h"
 #import "zRuleOR.h"
+#import "zBlockRule.h"
 
-
-@interface zValidator(Chaining)
+@interface zValidator(Chaning)
 +(zValidator *(^)(id target))target;
 
--(zRule *(^)(NSString *asserion, zValidation))makesure;
 
--(zRuleAND *(^)(NSString *assertion, zValidation))makesure_a;
--(zRuleOR *(^)(NSString *assertion, zValidation))makesure_o;
+-(zBlockRule *(^)(NSString *))check;
+
+-(zValidator *(^)(NSString *, zValidation))checkIs;
+
+
+
+-(zRuleAND *(^)(NSString *))checkAndIs;
+
+-(zRuleAND *(^)(NSString *, zValidation))checkIsAndIs;
+
+
+
+-(zRuleOR *(^)(NSString *))checkOrIs;
+
+-(zRuleOR *(^)(NSString *, zValidation))checkIsOrIs;
 @end
+
 
 @interface zRule(Chaining)
+
 -(zValidator *)also;
 -(zValidator *)validator;
+
+-(zRule *(^)(zValidation))is;
 @end
 
+@interface zBlockRule(Chaining)
+-(zBlockRule *(^)(zValidation))is;
+@end
+@interface zComplexRule(Chaining)
+-(zComplexRule *(^)(zValidation))is;
+@end
+
+
 @interface zRuleAND(Chaning)
--(zRuleAND *(^)(zValidation))and;
+-(zRuleAND *)and;
+-(zRuleAND *(^)(zValidation))is;
+-(zRuleAND *(^)(zValidation))andIs;
 @end
 
 @interface zRuleOR(Chaning)
--(zRuleOR *(^)(zValidation))or;
+-(zRuleOR *)or;
+-(zRuleOR *(^)(zValidation))is;
+-(zRuleOR *(^)(zValidation))orIs;
 @end

@@ -19,47 +19,68 @@
     };
 }
 
--(zRule *(^)(NSString *assertion, zValidation block))makesure{
-    return ^(NSString *assertion, zValidation block){
-        zBlockRule *blockRule = [[zBlockRule alloc] init];
-        blockRule.block = block;
-        blockRule.root = self;
-        
-        [self addRule:blockRule withFailedMessage:assertion];
-        return blockRule;
+-(zBlockRule *(^)(NSString *))check{
+    return ^(NSString *assertion){
+        zBlockRule *rule = [[zBlockRule alloc] init];
+        [self addRule:rule withFailedMessage:assertion];
+        return rule;
     };
 }
 
--(zRuleAND *(^)(NSString *assertion, zValidation))makesure_a{
+-(zValidator *(^)(NSString *, zValidation))checkIs{
     return ^(NSString *assertion, zValidation block){
+        return self.check(assertion).is(block).also;
+    };
+}
+
+-(zValidator *(^)(NSString *, zValidation))alsoCheckIs{
+    return ^(NSString *assertion, zValidation block){
+        return self.check(assertion).is(block).also;
+    };
+}
+
+
+-(zRuleAND *(^)(NSString *))checkAndIs{
+    return ^(NSString *assertion){
         zRuleAND *rule = [[zRuleAND alloc] init];
-        rule.root = self;
         [self addRule:rule withFailedMessage:assertion];
-        
-        
-        zBlockRule *subRule = [[zBlockRule alloc] init];
-        subRule.parent = rule;
-        subRule.block = block;
-        
-        [rule addSubRule:subRule];
         return rule;
     };
 }
 
--(zRuleOR *(^)(NSString *assertion, zValidation))makesure_o{
+-(zRuleAND *(^)(NSString *, zValidation))checkIsAndIs{
     return ^(NSString *assertion, zValidation block){
+        return self.checkAndIs(assertion).andIs(block);
+    };
+}
+
+-(zRuleAND *(^)(NSString *, zValidation))alsoCheckIsAndIs{
+    return ^(NSString *assertion, zValidation block){
+        return self.checkAndIs(assertion).andIs(block);
+    };
+}
+
+
+-(zRuleOR *(^)(NSString *))checkOrIs{
+    return ^(NSString *assertion){
         zRuleOR *rule = [[zRuleOR alloc] init];
-        rule.root = self;
         [self addRule:rule withFailedMessage:assertion];
-        
-        zBlockRule *subRule = [[zBlockRule alloc] init];
-        subRule.parent = rule;
-        subRule.block = block;
-        
-        [rule addSubRule:subRule];
         return rule;
     };
 }
+
+-(zRuleOR *(^)(NSString *, zValidation))checkIsOrIs{
+    return ^(NSString *assertion, zValidation block){
+        return self.checkOrIs(assertion).orIs(block);
+    };
+}
+
+-(zRuleOR *(^)(NSString *, zValidation))alsoCheckIsOrIs{
+    return ^(NSString *assertion, zValidation block){
+        return self.checkOrIs(assertion).orIs(block);
+    };
+}
+
 @end
 
 @implementation zRule(Chaining)
@@ -72,14 +93,31 @@
     return self.root;
 }
 
+-(zRule *(^)(zValidation))is{
+    return ^(zValidation block){
+        NSAssert(NO, @"subclass should override this method");
+        return self;
+    };
+}
+
 @end
 
-@implementation zRuleAND(Chaining)
+@implementation zBlockRule(Chaining)
 
--(zRuleAND *(^)(zValidation))and{
+-(zBlockRule *(^)(zValidation))is{
+    return ^(zValidation block){
+        self.block = block;
+        return self;
+    };
+}
+
+@end
+
+@implementation zComplexRule(Chaining)
+
+-(zComplexRule *(^)(zValidation))is{
     return ^(zValidation block){
         zBlockRule *subRule = [[zBlockRule alloc] init];
-        subRule.parent = self;
         subRule.block = block;
         [self addSubRule:subRule];
         return self;
@@ -88,15 +126,29 @@
 
 @end
 
+@implementation zRuleAND(Chaining)
+
+-(zRuleAND *)and{
+    return self;
+}
+
+-(zRuleAND *(^)(zValidation))andIs{
+    return ^(zValidation block){
+        return self.is(block);
+    };
+}
+
+@end
+
 @implementation zRuleOR(Chaining)
 
--(zRuleOR *(^)(zValidation))or{
+-(zRuleOR *)or{
+    return self;
+}
+
+-(zRuleOR *(^)(zValidation))orIs{
     return ^(zValidation block){
-        zBlockRule *subRule = [[zBlockRule alloc] init];
-        subRule.parent = self;
-        subRule.block = block;
-        [self addSubRule:subRule];
-        return self;
+        return self.is(block);
     };
 }
 

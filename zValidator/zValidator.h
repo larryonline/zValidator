@@ -13,6 +13,8 @@
 @interface zValidator : NSObject<zValidator>
 @property (nonatomic, strong) id target;
 
+-(NSString *)failedMessageForRule:(id<zRule>)rule;
+
 -(void)addRule:(id<zRule>)rule withFailedMessage:(NSString *)message;
 
 -(BOOL)validate;

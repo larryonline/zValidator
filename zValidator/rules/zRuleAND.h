@@ -6,8 +6,8 @@
 //  Copyright © 2016年 zhennan. All rights reserved.
 //
 
-#import "zRule.h"
+#import "zComplexRule.h"
 
-@interface zRuleAND : zRule<zComplexRule>
-@property (nonatomic, copy) NSArray<id<zRule>> *subRules;
+@interface zRuleAND : zComplexRule<zComplexRule>
+
 @end

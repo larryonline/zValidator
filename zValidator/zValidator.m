@@ -48,6 +48,14 @@
     
     [self.order addObject:rule];
     [self.map setObject:nil == message? @"" : [message copy] forKey:rule];
+
+    rule.root = self;
+}
+
+-(NSString *)failedMessageForRule:(id<zRule>)rule{
+    NSString *message = [self.map objectForKey:rule];
+    NSAssert(nil != message, @"given rule should be child of validator");
+    return message;
 }
 
 

@@ -15,29 +15,6 @@
 @implementation zRuleAND
 
 
--(void)dealloc{
-    self.subRules = nil;
-}
-
--(id)init{
-    if(self = [super init]){
-        self.subRules = @[];
-    }
-    return self;
-}
-
--(id)copyWithZone:(NSZone *)zone{
-    zRuleAND *result = [[[self class] allocWithZone:zone] init];
-    result.uuid = self.uuid;
-    result.subRules = self.subRules;
-    return result;
-}
-
--(void)addSubRule:(id<zRule>)rule{
-    if(![self.subRules containsObject:rule]){
-        self.subRules = [self.subRules arrayByAddingObject:rule];
-    }
-}
 
 -(BOOL)validate:(id)data{
     BOOL ret = YES;

@@ -26,16 +26,15 @@
 
 -(void)testChaining{
     
-    zValidator *v = zValidator.new.makesure(@"target should be NSArray", ^BOOL(id data){
+    zValidator *v = zValidator.new.checkIs(@"target should be NSArray", ^BOOL(id data){
         
         return [data isKindOfClass:[NSArray class]];
         
-    }).
-    also.makesure_a(@"target length should be 4, and the sub item should all be NSString", ^BOOL(id data){
+    }).checkIsAndIs(@"target length should be 4, and the sub item should all be NSString", ^BOOL(id data){
         
         return 4 == [data count];
         
-    }).and(^BOOL(id data){
+    }).andIs(^BOOL(id data){
         
         BOOL ret = YES;
         for(NSInteger i = 0; i < [data count]; i++){
@@ -47,19 +46,20 @@
         return ret;
         
     }).
-    also.makesure_o(@"the first item should be 'a' or 'b' or 'c'. ", ^BOOL(id data){
+    also.checkIsOrIs(@"the first item should be 'a' or 'b' or 'c'. ", ^BOOL(id data){
         
         return [@"a" isEqualToString:[data objectAtIndex:0]];
         
-    }).or(^BOOL(id data){
+    }).orIs(^BOOL(id data){
         
         return [@"b" isEqualToString:[data objectAtIndex:0]];
         
-    }).or(^BOOL(id data){
+    }).orIs(^BOOL(id data){
         
         return [@"c" isEqualToString:[data objectAtIndex:0]];
         
     }).validator;
+    
     
     NSArray * mockList = @[
         @"I am not NSarray. sorry.",
