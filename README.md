@@ -27,7 +27,7 @@ NSArray *validators = @[
 
     // very long chain
     @"hi, i am zValidator work for NSString.".zzn.
-    checkOrIs(@"target should contains 'i' and 'am' and 'NSString'").contains(@"i").or.contains(@"am").or.contains(@"NSString").
+    checkOrIs(@"target should contains 'i am' or 'the' or 'this'").contains(@"i am").or.contains(@"the").or.contains(@"this").
     also.checkAndIs(@"target length should equal 38, and contains 'hi'").lengthEqual(38).and.contains(@"hi"),
 
     // utils for NSString
