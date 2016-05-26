@@ -1,5 +1,9 @@
-# zValidator
 
+## [DEPRECATED] - project is no longer maintained.  
+please check [zValidation2](https://github.com/larryonline/zValidator2)
+
+---
+# zValidator
 lib for NSObject validation.
 
 ## NSString VALIDATION SUPPORT
